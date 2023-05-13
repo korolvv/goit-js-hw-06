@@ -1,16 +1,14 @@
 const input = document.querySelector("#validation-input");
 
+function toggleClass(elem, a, b) {
+	elem.classList.add(a);
+	elem.classList.remove(b);
+}
+
 input.addEventListener("blur", () => {
-    if (input.value.length === Number(input.dataset.length)) {
-        // ! Щоб при втраті фокусу кожен раз не додавався клас, зроблено перевірку   
-		if (!input.classList.contains("valid")) {
-			input.classList.add("valid");
-			input.classList.remove("invalid");
-		}
+	if (input.value.length === Number(input.dataset.length)) {
+		toggleClass(input, "valid", "invalid");
 	} else {
-		if (!input.classList.contains("invalid")) {
-			input.classList.remove("valid");
-			input.classList.add("invalid");
-		}
+		toggleClass(input, "invalid", "valid");
 	}
 });
